@@ -1,0 +1,10 @@
+version: '2'
+services:
+  message-server:
+    container_name: docker-basic
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: docker-basic:latest
+    ports:
+      - 8887:8080
