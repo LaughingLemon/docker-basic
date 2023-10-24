@@ -18,7 +18,9 @@ public class SimpleRestController {
     @GetMapping("/person/{name}")
     public Person getPerson(@PathVariable String name) {
         log.info("name: {}", name);
-        return personService.findPerson(name);
+        Person returnedPerson = personService.findPerson(name);
+        log.info("person: {}", returnedPerson);
+        return returnedPerson;
     }
 
 }
