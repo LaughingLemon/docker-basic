@@ -29,10 +29,11 @@ class DockerBasicApplicationTests {
     void testBasicIntegrationTest() throws Exception {
         mvc.perform(get("/person/Andrew"))
            .andExpect(status().isOk())
-           .andExpect(content().json("{\n" +
-                                             "\t\"firstName\": \"Andrew\",\n" +
-                                             "\t\"lastName\": \"Jones\"\n" +
-                                             "}", true));
+           .andExpect(content().json("""
+                                             {
+                                             \t"firstName": "Andrew",
+                                             \t"lastName": "Jones"
+                                             }""", true));
     }
 
 }
