@@ -8,3 +8,18 @@ services:
     image: docker-basic:latest
     ports:
       - 8887:8080
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_DEFER-DATASOURCE-INITIALIZATION=true
+      - SPRING_SQL_INIT_MODE=ALWAYS
+  db:
+    image: postgres
+    container_name: db
+    environment:
+        - POSTGRES_USER=compose-postgres
+        - POSTGRES_PASSWORD=compose-postgres
